@@ -7,14 +7,14 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                1VLto1IFYb9m:
-                    host: '6436'
+                KTE5hMziZylZ:
+                    host: '7270'
                     guest: '22'
         provider:
             virtualbox:
                 modifyvm:
                     natdnshostresolver1: on
-                    memory: '477'
+                    memory: '512'
                 setextradata:
                     VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
         provision:
@@ -26,7 +26,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            6UO50YRKRyGQ:
+            KCJAeJyD4jbW:
                 source: ./
                 target: /var/www
                 nfs: 'false'
@@ -45,8 +45,10 @@ vagrantfile-local:
         host: detect
 server:
     packages:
-        - mc
         - vim
+        - mc
+        - git-core
+        - git
     dot_files:
         -
             bash_aliases: null
@@ -73,7 +75,7 @@ apache:
         - php
         - rewrite
     vhosts:
-        9h2whKsOJVeA:
+        Nip0fXiqufaC:
             servername: awesome.dev
             serveraliases:
                 - www.awesome.dev
@@ -97,11 +99,21 @@ apache:
 nginx:
     install: '0'
     vhosts:
-        poMrIFY8WGJe:
+        nJhOfbjI357m:
             server_name: shop.dev
             server_aliases:
                 - www.shop.dev
-            www_root: /var/www/shop.dev
+            www_root: /var/www/shop.dev/frontend/web
+            listen_port: '80'
+            index_files:
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+        EBwWSNUM4IXz:
+            server_name: admin.shop.dev
+            server_aliases:
+                - www.admin.shop.dev
+            www_root: /var/www/shop.dev/backend/web
             listen_port: '80'
             index_files:
                 - index.php
@@ -116,11 +128,12 @@ php:
             - cli
             - intl
             - mcrypt
-            - gd
             - curl
             - imagick
+            - gd
             - mbstring
             - mysql
+            - fpm
         pear: {  }
         pecl:
             - pecl_http
@@ -148,13 +161,13 @@ mysql:
     phpmyadmin: '1'
     adminer: 0
     databases:
-        iVN1eKS5UOQy:
+        660leFC5Mupm:
             grant:
                 - ALL
             name: shop
             host: localhost
-            user: shop
-            password: yii2shopboilerplate
+            user: yii2shop
+            password: boilerplate
             sql_file: /var/www/sql/shop.sql
 postgresql:
     install: 0
