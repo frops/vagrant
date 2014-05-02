@@ -7,8 +7,8 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                KTE5hMziZylZ:
-                    host: '7270'
+                n2Wa60n9oxYB:
+                    host: '8653'
                     guest: '22'
         provider:
             virtualbox:
@@ -26,7 +26,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            KCJAeJyD4jbW:
+            VZmmizF97ajr:
                 source: ./
                 target: /var/www
                 nfs: 'false'
@@ -44,11 +44,7 @@ vagrantfile-local:
     vagrant:
         host: detect
 server:
-    packages:
-        - vim
-        - mc
-        - git-core
-        - git
+    packages: {  }
     dot_files:
         -
             bash_aliases: null
@@ -75,7 +71,7 @@ apache:
         - php
         - rewrite
     vhosts:
-        Nip0fXiqufaC:
+        mpB5YKh9zshw:
             servername: awesome.dev
             serveraliases:
                 - www.awesome.dev
@@ -97,9 +93,9 @@ apache:
     mod_pagespeed: 0
     mod_spdy: 0
 nginx:
-    install: '0'
+    install: '1'
     vhosts:
-        nJhOfbjI357m:
+        PPeAz37Y96WT:
             server_name: shop.dev
             server_aliases:
                 - www.shop.dev
@@ -109,7 +105,7 @@ nginx:
                 - index.php
             envvars:
                 - 'APP_ENV dev'
-        EBwWSNUM4IXz:
+        f3wriSPNlKCV:
             server_name: admin.shop.dev
             server_aliases:
                 - www.admin.shop.dev
@@ -121,19 +117,13 @@ nginx:
                 - 'APP_ENV dev'
 php:
     install: '1'
-    version: '55'
+    version: '54'
     composer: '1'
     modules:
         php:
             - cli
             - intl
             - mcrypt
-            - curl
-            - imagick
-            - gd
-            - mbstring
-            - mysql
-            - fpm
         pear: {  }
         pecl:
             - pecl_http
@@ -141,7 +131,7 @@ php:
         display_errors: On
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
-    timezone: Europe/Moscow
+    timezone: America/Chicago
 xdebug:
     install: '1'
     settings:
@@ -161,7 +151,7 @@ mysql:
     phpmyadmin: '1'
     adminer: 0
     databases:
-        660leFC5Mupm:
+        47y4hkhD0t6Z:
             grant:
                 - ALL
             name: shop
@@ -211,4 +201,3 @@ rabbitmq:
     install: 0
     settings:
         port: '5672'
-
